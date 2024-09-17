@@ -9,7 +9,7 @@
     android:gravity="center|start"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".login_activity">
+    tools:context=".LoginActivity">
 
 
     <!-- Application Logo or Title -->
@@ -18,40 +18,54 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
+
+        android:fontFamily="verdana"
         android:rotationY="0"
-        android:text="Login"
+        android:text="Welcome,"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
+        android:textSize="38dp"
         android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="verdana"
+        android:rotationY="0"
+        android:text="Glad to see you!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="36dp" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="59dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/translucent_background"
         android:drawableLeft="@drawable/baseline_account_circle_24"
-        android:hint="Username"
+        android:hint=" Username"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:textColor="#000000" />
+        android:textColorHint="@color/white" />
 
     <!-- Password Field -->
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/translucent_background"
         android:drawableLeft="@drawable/baseline_lock_24"
-        android:hint="Password"
+        android:hint=" Password"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textColorHint="@color/white" />
 
     <!-- Remember Me Checkbox -->
 
@@ -59,31 +73,120 @@
 
     <!-- Password Recovery Link -->
 
+    <TextView
+        android:id="@+id/password_recovery"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:text="Forgot Password?"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
     <CheckBox
         android:id="@+id/remember_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Remember Me"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/login_btn"
         android:layout_width="match_parent"
-        android:backgroundTint="#FF800080"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginBottom="16dp"
-        android:text="Login" />
+        android:backgroundTint="#FFFf"
+        android:text="Login"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:cornerRadius="12dp" />
 
-    <TextView
-        android:id="@+id/password_recovery"
-        android:layout_width="wrap_content"
+
+    <!-- "Or Login with" text -->
+
+    <!-- Right line -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:orientation="horizontal"
         android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:text="Forgot Password?"
-        android:textColor="#FFFFFF" />
+        android:layout_marginBottom="16dp"
+        android:gravity="center">
 
+        <!-- Left line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
+
+        <!-- "Or Login with" text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or Login with"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold" />
+
+        <!-- Right line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- Google Login Button -->
+
+    <!-- Facebook Login Button -->
+
+
+    <ImageButton
+        android:id="@+id/btn_google_login"
+        android:layout_width="116dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_margin="1dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/google" />
+
+    <LinearLayout
+        android:layout_width="382dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">  <!-- Signup text -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="61dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Don't have an account? "
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_gravity="center"
+            android:text="Sign Up Now"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 
 </LinearLayout>
