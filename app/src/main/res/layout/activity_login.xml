@@ -26,7 +26,7 @@
         android:text="Welcome,"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="38dp"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
     <TextView
@@ -41,18 +41,6 @@
         android:textColor="#FFFFFF"
         android:textSize="36dp" />
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/translucent_background"
-        android:drawableLeft="@drawable/baseline_account_circle_24"
-        android:hint=" Username"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:textColorHint="@color/white" />
-
     <!-- Password Field -->
     <!-- LinearLayout for Password and Toggle -->
 
@@ -63,10 +51,24 @@
 
     <!-- Password Recovery Link -->
 
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="380dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/translucent_background"
+        android:drawableLeft="@drawable/baseline_account_circle_24"
+        android:hint=" Username"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:textColorHint="@color/white" />
+
     <FrameLayout
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <!-- Password EditText -->
@@ -75,10 +77,11 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="379dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="8sp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="380dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center_horizontal"
+
+
             android:layout_weight="1"
             android:background="@drawable/translucent_background"
             android:drawableLeft="@drawable/baseline_lock_24"
@@ -94,8 +97,8 @@
             android:id="@+id/show_hide_password"
             android:layout_width="64dp"
             android:layout_height="47dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="13sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="158dp"
 
 
             android:contentDescription="Show/Hide Password"
@@ -103,51 +106,58 @@
             android:src="@drawable/ic_visibility_off" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/password_recovery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:text="Forgot Password?"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
-    <CheckBox
-        android:id="@+id/remember_me"
-        android:layout_width="162dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Remember Me"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/password_recovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="21dp"
+            android:clickable="true"
+            android:text="Forgot Password ?"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FFFf"
-        android:text="Login"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:cornerRadius="12dp" />
+        <CheckBox
+            android:id="@+id/remember_me"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="119dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Remember Me"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
 
 
     <!-- "Or Login with" text -->
 
     <!-- Right line -->
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FFFf"
+        android:text="Login"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="8dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="16dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <!-- Left line -->
         <View
@@ -160,11 +170,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Or Login with"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:text="Or Login with"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <!-- Right line -->
@@ -172,7 +182,7 @@
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:layout_weight="1"
-            android:background="@android:color/white"/>
+            android:background="@android:color/white" />
     </LinearLayout>
 
     <!-- Google Login Button -->
@@ -207,9 +217,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:text="Don't have an account? "
-            android:textSize="16sp"
             android:textColor="@color/black"
-             />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_signup"
