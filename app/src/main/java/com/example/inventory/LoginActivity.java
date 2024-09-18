@@ -3,10 +3,13 @@ package com.example.inventory;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username, password;
     private CheckBox rememberMe;
     private Button loginButton;
-    private TextView forgotPassword, signUpNow; // Added signUpNow
+    private TextView forgotPassword, signUpNow;
+    private ImageView showHidePassword; // ImageView for password visibility toggle
     private FirebaseAuth mAuth;
 
     @Override
@@ -27,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+
 
         setContentView(R.layout.activity_login);
 
@@ -37,9 +42,25 @@ public class LoginActivity extends AppCompatActivity {
         rememberMe = findViewById(R.id.remember_me);
         loginButton = findViewById(R.id.login_btn);
         forgotPassword = findViewById(R.id.password_recovery);
-        signUpNow = findViewById(R.id.tv_signup); // Find the TextView for "Sign Up Now"
+        signUpNow = findViewById(R.id.tv_signup);
+        showHidePassword = findViewById(R.id.show_hide_password); // Find the ImageView for show/hide password
 
-        // Handle login
+        // Handle password visibility toggle
+        showHidePassword.setOnClickListener(v -> {
+            if (password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
+                // Show Password
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                showHidePassword.setImageResource(R.drawable.ic_visibility); // Change icon to show password
+            } else {
+                // Hide Password
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                showHidePassword.setImageResource(R.drawable.ic_visibility_off); // Change icon to hide password
+            }
+            // Move cursor to the end of the password field
+            password.setSelection(password.length());
+        });
+
+        // Handle login button click
         loginButton.setOnClickListener(v -> {
             String userEmail = username.getText().toString().trim();
             String userPassword = password.getText().toString().trim();

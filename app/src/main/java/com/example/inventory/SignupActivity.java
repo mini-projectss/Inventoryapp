@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText fullName, email, mobileNumber, password, rePassword;
     private Button signButton; // Corrected line
     private FirebaseAuth mAuth;
+    private TextView loginNow; // Added loginNow
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,14 @@ public class SignupActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         rePassword = findViewById(R.id.repassword);
         signButton = findViewById(R.id.sign_btn);
+        loginNow = findViewById(R.id.login_Now); // Find the TextView for "Sign Up Now"
 
+        // Set the loginNow click listener here, outside of the signButton click listener
+        loginNow.setOnClickListener(visib -> {
+            // Navigate to LoginActivity when the TextView is clicked
+            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
 
         signButton.setOnClickListener(new View.OnClickListener() {
             @Override
