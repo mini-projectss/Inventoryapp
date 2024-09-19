@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             password.setSelection(password.length());
         });
 
+
         // Handle login button click
         loginButton.setOnClickListener(v -> {
             String userEmail = username.getText().toString().trim();
@@ -94,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(userEmail, userPassword)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Login success, navigate to the next screen (MainActivity or Dashboard)
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            // Login success, navigate to DashboardActivity
+                            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                             startActivity(intent);
                             finish(); // Close the login activity
                         } else {
@@ -104,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
         });
+
 
         // Handle forgot password
         forgotPassword.setOnClickListener(v -> {
@@ -161,7 +163,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -171,13 +172,19 @@ public class LoginActivity extends AppCompatActivity {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        // Handle signed-in user here (redirect to next activity)
+
+                        // Navigate to DashboardActivity
+                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                        startActivity(intent);
+                        finish(); // Close the login activity
                     } else {
                         // If sign-in fails, display a message to the user.
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        Toast.makeText(LoginActivity.this, "Google Sign-In failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
+
 
 }
 
