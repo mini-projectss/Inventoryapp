@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Inventory" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Customize your light theme here -->
+        <!-- Set status and navigation bars to be transparent -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!-- Optional: for light status bar icons -->
+        <!-- <item name="android:windowLightStatusBar">true</item> -->
     </style>
 
+    <!-- Inheriting from the base theme -->
     <style name="Theme.Inventory" parent="Base.Theme.Inventory" />
 </resources>
