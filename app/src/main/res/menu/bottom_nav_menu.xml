@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_inventory"
+        android:icon="@drawable/ic_inventory"
+        android:title="Inventory" />
+    <item
+        android:id="@+id/nav_supplies"
+        android:icon="@drawable/ic_supplies"
+        android:title="Supplies" />
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/nav_processing"
+        android:icon="@drawable/ic_processing"
+        android:title="Processing" />
+    <item
+        android:id="@+id/nav_audit"
+        android:icon="@drawable/ic_audit"
+        android:title="Audit" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
+</menu>

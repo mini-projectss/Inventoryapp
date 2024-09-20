@@ -8,7 +8,7 @@
     android:background="@drawable/background_gradient"
     android:gravity="center|start"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:paddingHorizontal="16dp"
     tools:context=".LoginActivity">
 
 
@@ -53,15 +53,16 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="59dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:background="@drawable/translucent_background"
         android:drawableLeft="@drawable/baseline_account_circle_24"
-        android:hint=" Username"
+        android:hint="Username"
         android:inputType="textEmailAddress"
-        android:padding="12dp"
+        android:padding="20dp"
+        android:drawablePadding="20dp"
         android:textColorHint="@color/white" />
 
     <FrameLayout
@@ -77,11 +78,11 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="59dp"
             android:layout_gravity="center_horizontal"
 
-
+            android:padding="20dp"
             android:layout_weight="1"
             android:background="@drawable/translucent_background"
             android:drawableLeft="@drawable/baseline_lock_24"
@@ -89,7 +90,7 @@
 
             android:hint=" Password"
             android:inputType="textPassword"
-            android:padding="12dp"
+            android:drawablePadding="20dp"
             android:textColor="#000000"
             android:textColorHint="@color/white" />
 
@@ -98,7 +99,7 @@
             android:layout_width="64dp"
             android:layout_height="47dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="158dp"
+            android:layout_marginLeft="138dp"
 
 
             android:contentDescription="Show/Hide Password"
@@ -117,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="100dp"
 
             android:clickable="true"
             android:text="Forgot Password ?"
@@ -134,7 +135,7 @@
             android:layout_width="142dp"
             android:layout_height="22dp"
             android:layout_gravity="center"
-            android:layout_marginRight="119dp"
+            android:layout_marginRight="99dp"
             android:text="Remember Me"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
@@ -142,12 +143,13 @@
     </FrameLayout>
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#FFFf"
+        android:drawablePadding="20dp"
         android:text="Login"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -157,7 +159,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="55dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -191,34 +193,49 @@
     <!-- Google Login Button -->
 
     <!-- Facebook Login Button -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+    android:orientation="horizontal">
 
+    <ImageButton
+        android:id="@+id/btn_facebook_login"
+        android:layout_width="138dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="16dp"
+    android:adjustViewBounds="true"
+    android:background="@drawable/rounded_button"
+    android:backgroundTint="@color/white"
+    android:padding="8dp"
+    android:scaleType="centerCrop"
+    android:src="@drawable/google" />
 
     <ImageButton
         android:id="@+id/btn_google_login"
-        android:layout_width="116dp"
+        android:layout_width="138dp"
         android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:layout_margin="1dp"
         android:adjustViewBounds="true"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/white"
         android:padding="8dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/google" />
+        android:scaleType="centerInside"
+        android:src="@drawable/facebook" />
+</LinearLayout>
+
 
     <LinearLayout
-        android:layout_width="382dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="60sp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:gravity="center"
-        android:orientation="horizontal">  <!-- Signup text -->
+        android:orientation="horizontal"
+        android:layout_gravity="center"> <!-- Center the layout -->
 
+        <!-- Signup text -->
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="61dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
             android:text="Don't have an account? "
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -226,14 +243,11 @@
         <TextView
             android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
-            android:layout_height="29dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:text="Sign Up Now"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-
     </LinearLayout>
 
 </LinearLayout>
