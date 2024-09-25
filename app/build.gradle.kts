@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-
     id("com.google.gms.google-services")
 }
 
@@ -27,6 +26,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -34,22 +34,32 @@ android {
 }
 
 dependencies {
-
+    // AndroidX dependencies
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
+    // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Firebase BoM (Bill of Materials) for consistent versions of Firebase libraries
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+
+    // Firebase Analytics
     implementation("com.google.firebase:firebase-analytics")
-    implementation ("com.google.firebase:firebase-auth:23.0.0")
-    implementation ("com.google.android.material:material:1.4.0")
-    implementation ("com.google.android.gms:play-services-auth:20.3.0")
 
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth")
 
+    // Firebase Firestore
+    implementation("com.google.firebase:firebase-firestore")
 
+    // Play Services Auth
+    implementation("com.google.android.gms:play-services-auth:20.3.0")
 
+    // Material Design
+    implementation("com.google.android.material:material:1.4.0")
 }
-

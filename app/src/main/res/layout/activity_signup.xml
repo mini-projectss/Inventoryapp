@@ -100,7 +100,7 @@
 
     <Button
         android:id="@+id/sign_btn"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#FFFf"
