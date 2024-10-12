@@ -4,16 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.inventory.R;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardActivity extends AppCompatActivity {
+    DrawerLayout drawerLayout;
+    ImageButton menu_button;
+
 
     private ArcProgressView arcProgressView;
 
@@ -25,6 +31,9 @@ public class DashboardActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 
         setContentView(R.layout.activity_dashboard);
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        menu_button = findViewById(R.id.menu_button);
 
         // Find the ArcProgressView from the layout
         arcProgressView = findViewById(R.id.arcProgressView);
@@ -43,6 +52,13 @@ public class DashboardActivity extends AppCompatActivity {
         arcProgressView.setSegmentLabels(segmentLabels); // Set the custom labels
 
         arcProgressView.invalidate();
+
+        menu_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.open();
+            }
+        });
 
 
 
