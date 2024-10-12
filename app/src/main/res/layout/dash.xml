@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="8dp"
+    android:background="#1C1C23">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="332dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="-22dp">
+
+        <Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#BCBCBC">
+
+            <ImageButton
+                android:id="@+id/menu_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="6dp"
+                android:src="@drawable/baseline_menu_24" />
+        </Toolbar>
+
+        <!-- TextView to show the budget text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="16dp"
+            android:text="Overview"
+            android:textColor="#818199"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.example.inventory.ArcProgressView
+            android:id="@+id/arcProgressView"
+            android:layout_width="275dp"
+            android:layout_height="275dp"
+            android:layout_gravity="center"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="#292934"
+        app:cardCornerRadius="18dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="389dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#30303C"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <View
+                        android:layout_width="77dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="top|center"
+                        android:layout_weight="2"
+                        android:background="#00FFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Raw Materials"
+
+                        android:textColor="#818199"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3500"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#30303C"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <View
+                        android:layout_width="77dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="top|center"
+                        android:layout_weight="2"
+                        android:background="#FF7B69"></View>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Processing"
+                        android:textColor="#818199"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4500"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#30303C"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <View
+                        android:layout_width="77dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="top|center"
+                        android:layout_weight="1"
+                        android:background="#8C66CC"></View>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Finished Goods"
+                        android:textColor="#818199"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2500"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:backgroundTint="#0E0E12"
+        app:cardCornerRadius="136dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+
+        <Button
+            android:layout_width="385dp"
+            android:layout_height="47dp"
+            android:layout_gravity="center"
+            android:drawablePadding="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="#1B1B21"
+            android:text="Upcoming Supplies"
+            android:textColor="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="#1B1B21">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Box 1: Auto & Transport -->
+
+                    <!-- Box 2: Entertainment -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/box_background"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/category1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Steel"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/amount1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="5 Days Left"
+                            android:textColor="#818199"
+                            android:textSize="14sp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar1"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_marginTop="8dp"
+                            android:max="100"
+                            android:progress="50"
+                            android:progressTint="#00FFFF"
+                            android:progressBackgroundTint="#818199"/>
+                    </LinearLayout>
+
+                    <!-- Other Boxes -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/box_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/category2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wood"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/amount2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7 Days Left"
+                            android:textSize="14sp"
+                            android:textColor="#818199"
+                            android:layout_marginTop="4dp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar2"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_marginTop="8dp"
+                            android:max="100"
+                            android:progress="30"
+                            android:progressTint="#8C66CC"
+                            android:progressBackgroundTint="#818199"/>
+                    </LinearLayout>
+
+                    <!-- Box 3: Security -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/box_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/category3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Plastic"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/amount3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9 Days Left"
+                            android:textSize="14sp"
+                            android:textColor="#818199"
+                            android:layout_marginTop="4dp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar3"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:progress="30"
+                            android:max="100"
+                            android:progressTint="#FF7B69"
+                            android:layout_marginTop="8dp"
+                            android:progressBackgroundTint="#818199"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/box_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/category4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coal"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/amount4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 Days Left"
+                            android:textSize="14sp"
+                            android:textColor="#818199"
+                            android:layout_marginTop="4dp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar4"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_marginTop="8dp"
+                            android:max="100"
+                            android:progress="80"
+                            android:progressTint="#00ffff"
+                            android:progressBackgroundTint="#818199"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/box_background"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/category5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rubber"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/amount5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 Days Left"
+                            android:textSize="14sp"
+                            android:textColor="#818199"
+                            android:layout_marginTop="4dp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar5"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_marginTop="8dp"
+                            android:max="100"
+                            android:progress="90"
+                            android:progressTint="#8C66CC"
+                            android:progressBackgroundTint="#818199"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
