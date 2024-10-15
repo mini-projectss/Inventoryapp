@@ -15,10 +15,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.inventory.R;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class DashboardActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ImageButton menu_button;
+    NavigationView nav_view;
 
 
     private ArcProgressView arcProgressView;
@@ -34,6 +36,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerLayout);
         menu_button = findViewById(R.id.menu_button);
+        nav_view = findViewById(R.id.nav_view);
 
         // Find the ArcProgressView from the layout
         arcProgressView = findViewById(R.id.arcProgressView);
@@ -62,7 +65,18 @@ public class DashboardActivity extends AppCompatActivity {
 
 
 
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
 
+                if(itemId == R.id.nav_profile){
+                    startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+                }
+                drawerLayout.close();
+                return false;
+            }
+        });
 
 
     }
