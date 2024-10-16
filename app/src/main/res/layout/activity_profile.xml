@@ -34,7 +34,8 @@
                         android:id="@+id/constraintLayout"
                         android:layout_width="match_parent"
                         android:layout_height="360dp"
-                        android:background="@drawable/background1">
+                        android:background="@drawable/background1"
+                        tools:ignore="MissingConstraints">
 
                         <Button
                             android:id="@+id/edit"
@@ -115,7 +116,8 @@
                             android:layout_margin="12dp"
                             android:orientation="horizontal"
                             tools:layout_editor_absoluteX="-5dp"
-                            tools:layout_editor_absoluteY="12dp">
+                            tools:layout_editor_absoluteY="12dp"
+                            tools:ignore="DuplicateIds">
 
                             <EditText
                                 android:id="@+id/mob"
@@ -149,7 +151,8 @@
                             android:layout_margin="12dp"
                             android:orientation="horizontal"
                             tools:layout_editor_absoluteX="-5dp"
-                            tools:layout_editor_absoluteY="12dp">
+                            tools:layout_editor_absoluteY="12dp"
+                            tools:ignore="DuplicateIds">
 
                             <EditText
                                 android:id="@+id/editTextText"
