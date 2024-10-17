@@ -27,9 +27,6 @@
             android:name=".InventoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Inventory"
-            android:exported="false" />
-        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity android:name=".DashboardActivity" />
