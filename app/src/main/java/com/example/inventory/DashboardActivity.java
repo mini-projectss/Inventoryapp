@@ -73,6 +73,19 @@ public class DashboardActivity extends AppCompatActivity {
                 if(itemId == R.id.nav_profile){
                     startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
                 }
+                else if(itemId == R.id.nav_inventory){
+                    startActivity(new Intent(DashboardActivity.this, InventoryActivity.class));
+                }
+                else if(itemId == R.id.nav_supplies){
+                    startActivity(new Intent(DashboardActivity.this, SuppliesActivity.class));
+                }
+                else if(itemId == R.id.nav_audit){
+                    startActivity(new Intent(DashboardActivity.this, AuditActivity.class));
+                }
+                else if(itemId == R.id.nav_processing){
+                    startActivity(new Intent(DashboardActivity.this, ProcessingActivity.class));
+                }
+
                 drawerLayout.close();
                 return false;
             }
