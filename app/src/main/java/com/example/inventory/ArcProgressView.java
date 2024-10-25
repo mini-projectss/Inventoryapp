@@ -1,4 +1,3 @@
-
 package com.example.inventory;
 
 import android.content.Context;
@@ -11,16 +10,19 @@ import android.view.View;
 import androidx.core.content.ContextCompat;
 
 public class ArcProgressView extends View {
+    private int rawMaterialsProgress = 10;  // Default value for testing
+    private int processingItemsProgress = 30; // Default value for testing
+    private int finishedGoodsProgress = 60; // Default value for testing
 
     private Paint segmentPaint;
-    private Paint textPaint; // Paint for text labels
+    private Paint textPaint;
     private RectF arcRect;
-    private float[] segmentValues = new float[]{30f, 45f, 25f}; // Default segment values
-    private String[] segmentLabels = new String[]{"Segment 1", "Segment 2", "Segment 3"}; // Default labels
-    private int[] segmentColors;
 
-    private static final int SEGMENT_STROKE_WIDTH = 50; // Thickness for segments
-    private static final int TEXT_SIZE = 40; // Text size for segment labels
+    private static final int SEGMENT_STROKE_WIDTH = 50;
+    private static final int TEXT_SIZE = 40;
+
+    // Colors for each segment
+    private int[] segmentColors;
 
     public ArcProgressView(Context context) {
         super(context);
@@ -41,7 +43,7 @@ public class ArcProgressView extends View {
         segmentPaint = new Paint();
         segmentPaint.setAntiAlias(true);
         segmentPaint.setStyle(Paint.Style.STROKE);
-        segmentPaint.setStrokeWidth(SEGMENT_STROKE_WIDTH); // Uniform thickness
+        segmentPaint.setStrokeWidth(SEGMENT_STROKE_WIDTH);
 
         textPaint = new Paint();
         textPaint.setAntiAlias(true);
@@ -50,23 +52,28 @@ public class ArcProgressView extends View {
         textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
 
         arcRect = new RectF();
+
+        // Set default colors if none are provided
+        segmentColors = new int[]{
+                ContextCompat.getColor(getContext(), android.R.color.holo_orange_light),   // Raw Materials
+                ContextCompat.getColor(getContext(), android.R.color.holo_purple), // Processing Items
+                ContextCompat.getColor(getContext(), android.R.color.holo_blue_bright)   // Finished Goods
+        };
     }
 
-    // Set the percentage values for each segment
-    public void setSegmentValues(float[] segmentValues) {
-        this.segmentValues = segmentValues;
-        invalidate(); // Redraw the view when data changes
-    }
-
-    // Set the colors for each segment
-    public void setSegmentColors(int[] segmentColors) {
-        this.segmentColors = segmentColors;
+    // Methods to update each segment's progress
+    public void setRawMaterialsProgress(int progress) {
+        this.rawMaterialsProgress = progress;
         invalidate();
     }
 
-    // Set the labels for each segment
-    public void setSegmentLabels(String[] segmentLabels) {
-        this.segmentLabels = segmentLabels;
+    public void setProcessingItemsProgress(int progress) {
+        this.processingItemsProgress = progress;
+        invalidate();
+    }
+
+    public void setFinishedGoodsProgress(int progress) {
+        this.finishedGoodsProgress = progress;
         invalidate();
     }
 
@@ -74,42 +81,28 @@ public class ArcProgressView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (segmentColors == null || segmentValues == null) return; // Avoid drawing if no colors or values are set
-
-        // Define the bounds of the arc
         int width = getWidth();
         int height = getHeight();
         float radius = Math.min(width, height) / 2f;
-
-        // Account for the stroke width to avoid clipping
         float offset = SEGMENT_STROKE_WIDTH / 2f;
         arcRect.set(width / 2f - radius + offset, height / 2f - radius + offset,
                 width / 2f + radius - offset, height / 2f + radius - offset);
 
-        // Draw the segments
-        float startAngle = -90f; // Start at the top
+        int totalProgress = rawMaterialsProgress + processingItemsProgress + finishedGoodsProgress;
+        if (totalProgress == 0) return; // Avoid division by zero
+
+        float[] segmentValues = new float[]{
+                (rawMaterialsProgress / (float) totalProgress) * 100,
+                (processingItemsProgress / (float) totalProgress) * 100,
+                (finishedGoodsProgress / (float) totalProgress) * 100
+        };
+
+        float startAngle = -90f;
         for (int i = 0; i < segmentValues.length; i++) {
             segmentPaint.setColor(segmentColors[i]);
             float sweepAngle = segmentValues[i] / 100f * 360f;
             canvas.drawArc(arcRect, startAngle, sweepAngle, false, segmentPaint);
-
-            // Draw the labels
-            drawSegmentLabel(canvas, startAngle + sweepAngle / 2, segmentLabels[i], radius);
-
             startAngle += sweepAngle;
         }
     }
-
-    private void drawSegmentLabel(Canvas canvas, float angle, String label, float radius) {
-        // Convert angle to radians
-        double radians = Math.toRadians(angle);
-
-        // Calculate the label's position
-        float labelX = (float) (getWidth() / 2 + radius / 1.5 * Math.cos(radians)); // Adjusted for distance from center
-        float labelY = (float) (getHeight() / 2 + radius / 1.5 * Math.sin(radians));
-
-        // Draw the text label at the calculated position
-        canvas.drawText(label, labelX, labelY, textPaint);
-    }
 }
-

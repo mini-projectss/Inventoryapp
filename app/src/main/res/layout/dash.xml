@@ -13,11 +13,12 @@
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="332dp"
+        android:layout_marginBottom="112dp"
         android:gravity="start"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="-22dp">
+        tools:layout_editor_absoluteX="16dp">
 
         <Toolbar
             android:layout_width="match_parent"
@@ -47,8 +48,8 @@
 
         <com.example.inventory.ArcProgressView
             android:id="@+id/arcProgressView"
-            android:layout_width="275dp"
-            android:layout_height="275dp"
+            android:layout_width="232dp"
+            android:layout_height="251dp"
             android:layout_gravity="center"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -469,7 +470,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.6" />
 
 
 
