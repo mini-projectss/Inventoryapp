@@ -55,7 +55,7 @@ public class ArcProgressView extends View {
 
         // Set default colors if none are provided
         segmentColors = new int[]{
-                ContextCompat.getColor(getContext(), android.R.color.holo_orange_light),   // Raw Materials
+                ContextCompat.getColor(getContext(), android.R.color.holo_orange_dark),   // Raw Materials
                 ContextCompat.getColor(getContext(), android.R.color.holo_purple), // Processing Items
                 ContextCompat.getColor(getContext(), android.R.color.holo_blue_bright)   // Finished Goods
         };
