@@ -71,6 +71,30 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
         db.update(TABLE_RAW_MATERIALS, values, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
+    // InventoryDBHelper.java
+
+    public void updateSupplyQuantity(int itemId, int quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("supply_quantity", quantity);
+        db.update(TABLE_RAW_MATERIALS, values, COLUMN_ID + "=?", new String[]{String.valueOf(itemId)});
+        db.close();
+    }
+
+    public void updateSupplyTime(int itemId, int time) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("supply_time", time);
+        db.update(TABLE_RAW_MATERIALS, values, COLUMN_ID + "=?", new String[]{String.valueOf(itemId)});
+        db.close();
+    }
+
+    public void incrementInventoryQuantity(int itemId, int quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "UPDATE " + TABLE_RAW_MATERIALS + " SET " + COLUMN_QUANTITY + " = " + COLUMN_QUANTITY + " + ? WHERE " + COLUMN_ID + " = ?";
+        db.execSQL(sql, new Object[]{quantity, itemId});
+        db.close();
+    }
 
     public List<InventoryItem> getAllInventoryItems() {
         List<InventoryItem> inventoryList = new ArrayList<>();

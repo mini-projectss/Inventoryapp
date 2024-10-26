@@ -2,34 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/itemNameTextView"
-        android:layout_width="wrap_content"
+        android:id="@+id/supplyItemName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Item Name"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_weight="1"
+        android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/incrementQuantityEditText"
-        android:layout_width="match_parent"
+        android:id="@+id/supplyQuantity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Increment Quantity"
-        android:inputType="number" />
+        android:layout_weight="1"
+        android:inputType="number"
+        android:hint="Quantity" />
 
     <EditText
-        android:id="@+id/incrementIntervalEditText"
-        android:layout_width="match_parent"
+        android:id="@+id/supplyTime"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Increment Interval (hours)"
-        android:inputType="number" />
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save" />
+        android:layout_weight="1"
+        android:inputType="number"
+        android:hint="Supply Time (hrs)" />
 </LinearLayout>

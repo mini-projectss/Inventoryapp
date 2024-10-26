@@ -4,6 +4,8 @@ public class InventoryItem {
     private int id;         // New field for item ID
     private String name;
     private int quantity;
+    private int supplyTime;
+    private int supplyQuantity;
 
     // Constructor with id
     public InventoryItem(int id, String name, int quantity) {
@@ -11,6 +13,25 @@ public class InventoryItem {
         this.name = name;
         this.quantity = quantity;
     }
+
+    // Getters and Setters for supplyTime and supplyQuantity
+    public int getSupplyTime() {
+        return supplyTime;
+    }
+
+    public void setSupplyTime(int supplyTime) {
+        this.supplyTime = supplyTime;
+    }
+
+    public int getSupplyQuantity() {
+        return supplyQuantity;
+    }
+
+    public void setSupplyQuantity(int supplyQuantity) {
+        this.supplyQuantity = supplyQuantity;
+    }
+
+
 
     // Getters and setters
     public int getId() {
