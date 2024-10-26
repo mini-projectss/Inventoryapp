@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class InventoryDBHelper extends SQLiteOpenHelper {
 
@@ -15,16 +16,79 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_RAW_MATERIALS = "rawMaterials";
-    public static final String TABLE_PROCESSING_ITEMS = "processingItems";
-    public static final String TABLE_FINISHED_GOODS = "finishedGoods";
+   
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_QUANTITY = "quantity";
+    public static final String TABLE_PROCESSING_ITEMS = "processingItems";
+    public static final String TABLE_FINISHED_GOODS = "finishedGoods";
 
+
+    
     public InventoryDBHelper(Context context, String dbName) {
         super(context, dbName, null, DATABASE_VERSION);
     }
+
+
+    public InventoryItem getInventoryItemByName(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM rawMaterials WHERE name=?", new String[]{name});
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(0); // Retrieve the ID from the first column
+            String itemName = cursor.getString(1); // Retrieve the name from the second column
+            int quantity = cursor.getInt(2); // Retrieve the quantity from the third column
+
+            InventoryItem item = new InventoryItem(id, itemName, quantity); // Use the correct constructor
+            cursor.close();
+            return item;
+        }
+        cursor.close();
+        return null;
+    }
+
+
+    public boolean createFinishedGood(String finishedGoodName, Map<Integer, Integer> requiredItems) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            for (Map.Entry<Integer, Integer> entry : requiredItems.entrySet()) {
+                int itemId = entry.getKey();
+                int requiredQuantity = entry.getValue();
+
+                Cursor cursor = db.rawQuery("SELECT quantity FROM rawMaterials WHERE _id=?", new String[]{String.valueOf(itemId)});
+                if (cursor.moveToFirst()) {
+                    int currentQuantity = cursor.getInt(0);
+                    if (currentQuantity < requiredQuantity) {
+                        cursor.close();
+                        db.endTransaction();
+                        return false; // Not enough inventory
+                    }
+                    ContentValues values = new ContentValues();
+                    values.put("quantity", currentQuantity - requiredQuantity);
+                    db.update("rawMaterials", values, "_id=?", new String[]{String.valueOf(itemId)});
+                }
+                cursor.close();
+            }
+
+            ContentValues finishedGoodValues = new ContentValues();
+            finishedGoodValues.put("name", finishedGoodName);
+            finishedGoodValues.put("quantity", 1); // Increment by 1 as a new finished good
+            db.insert("finishedGoods", null, finishedGoodValues);
+
+            db.setTransactionSuccessful();
+            return true;
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+
+
+
+
+
+
     public void updateInventoryItem(int id, String name, int quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -52,6 +116,8 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RAW_MATERIALS);
+
+
         onCreate(db);
     }
 

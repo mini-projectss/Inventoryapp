@@ -31,7 +31,9 @@ public class InventoryItem {
         this.supplyQuantity = supplyQuantity;
     }
 
-
+    public void setId(int id) {
+        this.id = id;
+    }
 
     // Getters and setters
     public int getId() {
