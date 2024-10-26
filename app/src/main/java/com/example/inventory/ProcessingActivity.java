@@ -27,7 +27,7 @@ public class ProcessingActivity extends AppCompatActivity {
     private List<InventoryItem> selectedItems;
     private Handler handler;
 
-    private EditText finishedGoodNameEditText, productionTimeEditText;
+    private EditText finishedGoodNameEditText, finishedGoodQuantityEditText, productionTimeEditText;
     private Button addItemButton, startProductionButton;
 
     @Override
@@ -38,6 +38,7 @@ public class ProcessingActivity extends AppCompatActivity {
         dbHelper = new InventoryDBHelper(this, "inventory_" + FirebaseAuth.getInstance().getCurrentUser().getUid() + ".db");
 
         finishedGoodNameEditText = findViewById(R.id.finishedGoodName);
+        finishedGoodQuantityEditText = findViewById(R.id.finishedGoodQuantity);
         productionTimeEditText = findViewById(R.id.productionTime);
         addItemButton = findViewById(R.id.addProcessingItemButton);
         startProductionButton = findViewById(R.id.startProductionButton);
@@ -91,9 +92,11 @@ public class ProcessingActivity extends AppCompatActivity {
 
     private void startProduction() {
         String finishedGoodName = finishedGoodNameEditText.getText().toString().trim();
+        String finishedGoodQuantityStr = finishedGoodQuantityEditText.getText().toString().trim();
         String productionTimeStr = productionTimeEditText.getText().toString().trim();
 
-        if (!finishedGoodName.isEmpty() && !productionTimeStr.isEmpty()) {
+        if (!finishedGoodName.isEmpty() && !finishedGoodQuantityStr.isEmpty() && !productionTimeStr.isEmpty()) {
+            int finishedGoodQuantity = Integer.parseInt(finishedGoodQuantityStr);
             int productionTime = Integer.parseInt(productionTimeStr) * 3600000; // convert hours to milliseconds
 
             Map<Integer, Integer> requiredItems = new HashMap<>();
@@ -102,7 +105,7 @@ public class ProcessingActivity extends AppCompatActivity {
             }
 
             handler.postDelayed(() -> {
-                boolean success = dbHelper.createFinishedGood(finishedGoodName, requiredItems);
+                boolean success = dbHelper.createFinishedGood(finishedGoodName, finishedGoodQuantity, requiredItems);
                 if (success) {
                     Toast.makeText(this, finishedGoodName + " production completed", Toast.LENGTH_SHORT).show();
                     adapter.notifyDataSetChanged();
@@ -113,7 +116,7 @@ public class ProcessingActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Production started for " + finishedGoodName, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Please enter finished good name and production time", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter finished good name, quantity, and production time", Toast.LENGTH_SHORT).show();
         }
     }
 

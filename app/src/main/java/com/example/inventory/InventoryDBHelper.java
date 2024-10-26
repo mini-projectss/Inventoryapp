@@ -48,13 +48,13 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean createFinishedGood(String finishedGoodName, Map<Integer, Integer> requiredItems) {
+    public boolean createFinishedGood(String finishedGoodName, int finishedGoodQuantity, Map<Integer, Integer> requiredItems) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         try {
             for (Map.Entry<Integer, Integer> entry : requiredItems.entrySet()) {
                 int itemId = entry.getKey();
-                int requiredQuantity = entry.getValue();
+                int requiredQuantity = entry.getValue() * finishedGoodQuantity;
 
                 Cursor cursor = db.rawQuery("SELECT quantity FROM rawMaterials WHERE _id=?", new String[]{String.valueOf(itemId)});
                 if (cursor.moveToFirst()) {
@@ -73,7 +73,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 
             ContentValues finishedGoodValues = new ContentValues();
             finishedGoodValues.put("name", finishedGoodName);
-            finishedGoodValues.put("quantity", 1); // Increment by 1 as a new finished good
+            finishedGoodValues.put("quantity", finishedGoodQuantity); // Set the finished good quantity
             db.insert("finishedGoods", null, finishedGoodValues);
 
             db.setTransactionSuccessful();
@@ -82,6 +82,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
+
 
 
 
